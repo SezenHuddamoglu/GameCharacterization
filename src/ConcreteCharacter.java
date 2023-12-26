@@ -7,15 +7,19 @@ public class ConcreteCharacter extends Character implements Subject {
     private Features eyes;
     private Features hair;
     private DefenseInventory defenseInventory;
-    private int health;
-    private int currentDefensePower;
-    private int currentAttackPower;
-    public boolean isDefending;
+
+    private int health;  // --------------\
+    private int currentDefensePower; // ---\  State concreteCharacter context
+    private int currentAttackPower;//-------/
+    public boolean isDefending; //---------/
 
     public ConcreteCharacter() {
         observers = new ArrayList();
         this.currentEyeColor = "normal"; // Varsayılan olarak normal göz rengi
         this.attackInventory = null; //new AttackInventory(); // Varsayılan olarak temel attackInventory
+
+        currentState = new HealthState(100); // Initial health set to 100
+
     }
 
     public void registerObserver(Observer o) {
@@ -34,6 +38,26 @@ public class ConcreteCharacter extends Character implements Subject {
             Observer observer = (Observer) observers.get(i);
             observer.update();
         }
+
+    }
+    private CharacterState currentState; //----- State
+    public void setState(CharacterState state) {
+        currentState = state;
+    }
+
+    @Override
+    public void takeDamage(int damage) {
+        currentState.takeDamage(damage);
+    }
+
+    @Override
+    public void getStronger(int strength) {
+        currentState.getStronger(strength);
+    }
+
+    @Override
+    public void display() {
+        System.out.println("Character with Health State");//------ displaying the health state of char
     }
 
     @Override

@@ -11,6 +11,22 @@ public class Main {
         Hair curlyHairCharacter = new Hair(basicCharacter);
         curlyHairCharacter.getCurlyHair();
 */
+        // Create a concrete character
+        Subject character = new ConcreteCharacter();
+
+        // Display the character
+        character.display();
+
+        // Simulate gameplay
+        character.takeDamage(20);
+        character.getStronger(10);
+
+        // Change the state if needed
+        ((ConcreteCharacter) character).setState(new HealthState(50));
+
+        // Simulate gameplay with the new state
+        character.takeDamage(30);
+        character.getStronger(15);
 
     }
 }
