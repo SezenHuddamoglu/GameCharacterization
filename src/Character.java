@@ -8,12 +8,9 @@ public abstract class Character {
     private int health;
     private int currentDefensePower;
     private int currentAttackPower;
+    private CharacterState currentState;
 
-    public Character(String eyeColor, String hairColor, String hairStyle) {
-        this.eyeColor = eyeColor;
-        this.hairColor = hairColor;
-        this.hairStyle = hairStyle;
-    }
+
     abstract void setEyeColor(String eyeColor);
     abstract void setHairColor(String hairColor);
     abstract public void setHairStyle(String hairStyle);
@@ -21,10 +18,16 @@ public abstract class Character {
     abstract void setDefenseInventory(DefenseInventory defenseInventory);
     abstract void setHealth(int health);
     abstract int setCurrentDefensePower(int defensePower);
-    abstract int setCurrentAttackPower(int attackPower);
+    abstract void setCurrentAttackPower(int attackPower);
     abstract String getDescription();
     public abstract void takeDamage(int damage);
     public abstract void getStronger(int strength);
+    public abstract void setCurrentState(CharacterState state);
+    public abstract void setAttackPower(AttackInventory attackInventory);
+
+    public CharacterState getCurrentState() {
+        return currentState;
+    }
 
     public AttackInventory getAttackInventory() {
         return attackInventory;
@@ -58,3 +61,4 @@ public abstract class Character {
         return currentAttackPower;
     }
 }
+

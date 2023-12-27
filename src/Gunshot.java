@@ -7,8 +7,7 @@ public class Gunshot implements AttackInventory {
     }
 
     public int getAttackPower() {
-        // Add the attack power of the Axe to the currentAttackPower of the decorated character
-        return decoratedCharacter.setCurrentAttackPower(35);
+        return 10;
     }
 
 

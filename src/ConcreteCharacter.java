@@ -11,18 +11,21 @@ public class ConcreteCharacter extends Character implements Subject {
     private int currentDefensePower;
     private int currentAttackPower;
 
-   // private int health;  // --------------\
+    // private int health;  // --------------\
     //private int currentDefensePower; // ---\  State concreteCharacter context
     //private int currentAttackPower;//-------/
     public boolean isDefending; //---------/
     private CharacterState currentState;
 
 
-     public ConcreteCharacter(String eyeColor, String hairColor, String hairStyle) {
-            super(eyeColor, hairColor, hairStyle);
-            observers = new ArrayList();
-            currentState = new HealthState(100); // Initial health set to 100
-        }
+    public ConcreteCharacter(String eyeColor, String hairColor, String hairStyle) {
+        this.eyeColor = eyeColor;
+        this.hairColor = hairColor;
+        this.hairStyle = hairStyle;
+        observers = new ArrayList();
+        currentState = new HealthState(100); // Initial health set to 100
+
+    }
 
     public void registerObserver(Observer o) {
         observers.add(o);
@@ -43,6 +46,10 @@ public class ConcreteCharacter extends Character implements Subject {
 
     }
     @Override
+    public void setCurrentState(CharacterState state){
+        this.currentState=state;
+    }
+    @Override
     public void setEyeColor(String eyeColor) {
         this.eyeColor = eyeColor;
         notifyObservers();
@@ -54,32 +61,33 @@ public class ConcreteCharacter extends Character implements Subject {
         notifyObservers();
     }
 
-@Override
+    @Override
     public void setHairStyle(String hairStyle) {
         this.hairStyle = hairStyle;
         notifyObservers();
     }
 
-@Override
-    public void setAttackInventory(AttackInventory attackInventory) {
+    @Override
+    void setAttackInventory(AttackInventory attackInventory) {
         this.attackInventory = attackInventory;
         notifyObservers();
+
     }
 
-@Override
+    @Override
     public void setDefenseInventory(DefenseInventory defenseInventory) {
         this.defenseInventory = defenseInventory;
         notifyObservers();
     }
 
-@Override
+    @Override
     public void setHealth(int health) {
         this.health = health;
         notifyObservers();
     }
 
 
-     //----- State
+    //----- State
     public void setState(CharacterState state) {
         currentState = state;
         notifyObservers();
@@ -98,10 +106,18 @@ public class ConcreteCharacter extends Character implements Subject {
     }
 
     @Override
-    public int setCurrentAttackPower(int attackPower) {
+    public void setCurrentAttackPower(int attackPower) {
         this.currentAttackPower = attackPower;
-        notifyObservers(); // Gözlemcileri bilgilendir
-        return attackPower;
+    }
+
+    @Override
+    public void setAttackPower(AttackInventory attackInventory) {
+        this.attackInventory = attackInventory;
+        this.currentAttackPower = attackInventory.getAttackPower();
+    }
+
+    public int getCurrentAttackPower() {
+        return currentAttackPower;
     }
     @Override
     public int setCurrentDefensePower(int defensePower) {
@@ -116,9 +132,10 @@ public class ConcreteCharacter extends Character implements Subject {
     }
 
     @Override
-    String getDescription() {
-        return "A character with " + eyeColor + ", " + hairStyle + ", "+ hairColor;
+    public String getDescription() {
+        return "A character with " + this.eyeColor + ", " + this.hairStyle + ", "+ this.hairColor;
     }
+
 }
 
 
