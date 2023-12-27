@@ -1,23 +1,9 @@
 public interface AttackInventory {
 
+    // Declare a method to get the attack power of the entity implementing this interface.
     int getAttackPower();
 
+    // Declare a method to get the description of the attack inventory.
     String getDescription();
 }
-/*interface AttackInventory{
 
-  protected Character decoratedCharacter;
-
-   public AttackInventory(Character decoratedCharacter) {
-       this.decoratedCharacter = decoratedCharacter;
-   }
-
-
-   public String getDescription() {
-       return decoratedCharacter.getDescription();
-   }
-
-   public abstract int getAttackPower();
-
-}*/
-//protected abstract int getAttackPower();

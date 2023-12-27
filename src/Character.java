@@ -1,11 +1,12 @@
 public abstract class Character {
-    private String EyeColor;
-    private AttackInventory attackInventory;
+
+    // Private instance variables to store various characteristics and states of the character.
     private String eyeColor;
+    private AttackInventory attackInventory;
     private String hairStyle;
     private String hairColor;
     private DefenseInventory defenseInventory;
-    private int health=100;
+    private int health = 100;
     private int currentDefensePower;
     private int currentAttackPower;
     private CharacterState wellHealth;
@@ -14,7 +15,7 @@ public abstract class Character {
     private CharacterState dead;
     private CharacterState currentState;
 
-
+    // Abstract methods to be implemented by subclasses to set various characteristics.
     abstract void setEyeColor(String eyeColor);
     abstract void setHairColor(String hairColor);
     abstract public void setHairStyle(String hairStyle);
@@ -24,18 +25,18 @@ public abstract class Character {
     abstract int setCurrentDefensePower(int defensePower);
     abstract void setCurrentAttackPower(int attackPower);
     abstract String getDescription();
+
+    // Abstract methods related to character actions and states.
     public abstract void takeDamage(int damage);
     public abstract void getStronger(int strength);
     public abstract void setCurrentState(CharacterState state);
-   // public abstract void setAttackPower(AttackInventory attackInventory);
+    public abstract void setHealthState(CharacterState healthState);
+    public abstract CharacterState getDead();
+    public abstract CharacterState getMidHealth();
+    public abstract CharacterState getLowHealth();
+    public abstract CharacterState getWellHealth();
 
-
-    public CharacterState getHealthState() {
-        return currentState;
-    }
-
-
-
+    // Getter methods to access various properties of the character.
     public CharacterState getCurrentState() {
         return currentState;
     }
@@ -71,15 +72,6 @@ public abstract class Character {
     public int getCurrentAttackPower() {
         return currentAttackPower;
     }
-
-    public abstract void setHealthState(CharacterState HealthState);
-
-   public abstract CharacterState getDead();
-
-    public abstract CharacterState getMidHealth();
-    public abstract CharacterState getLowHealth();
-
-
-    public abstract CharacterState getWellHealth();
 }
+
 
