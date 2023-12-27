@@ -41,13 +41,13 @@ public class ConcreteCharacter extends Character implements Subject{
         observers = new ArrayList();
 
         //this.setHealth(100);
-        health=100;
 
 
-       wellHealth=new WellHealthState(this);
-        midHealth=new MidHealthState(this);
-        lowHealth=new LowHealthState(this);
-        dead=new DeadState(this);
+
+       wellHealth=new WellHealthState(this, this.getHealth());
+        midHealth=new MidHealthState(this,this.getHealth());
+        lowHealth=new LowHealthState(this,this.getHealth());
+        dead=new DeadState(this, this.getHealth());
 
 
 
@@ -109,6 +109,16 @@ public class ConcreteCharacter extends Character implements Subject{
     }
 
     @Override
+    public DefenseInventory getDefenseInventory() {
+        return defenseInventory;
+    }
+
+    @Override
+    public AttackInventory getAttackInventory() {
+        return attackInventory;
+    }
+
+    @Override
     public int getCurrentDefensePower() {
         return currentDefensePower;
     }
@@ -126,7 +136,6 @@ public class ConcreteCharacter extends Character implements Subject{
     }
     public void getStronger(int strength) {
         currentState.getStronger(this,strength);
-        getCurrentState();
         notifyObservers();
     }
 

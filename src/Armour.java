@@ -1,11 +1,14 @@
 public class Armour implements DefenseInventory{
     private int defensePower;
     private String description;
+    Character character;
 
 
-    public Armour() {
+    public Armour(Character character) {
         this.defensePower = 25;
-        this.description = "armour";
+        this.description = "Armour";
+        this.character=character;
+
     }
 
     @Override
@@ -13,10 +16,9 @@ public class Armour implements DefenseInventory{
         return defensePower;
     }
 
-    @Override
-    public String getDescription() {
-        return description;
-    }
+@Override
+public String getDescription() { return character.getDescription() + " with defense inventory " + description;
+}
 }
 
 

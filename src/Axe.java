@@ -1,11 +1,13 @@
 public class Axe implements AttackInventory {
     private int attackPower;
     private String description;
+    Character character;
 
 
-    public Axe() {
+    public Axe(Character character) {
         this.attackPower = 20;
-        this.description = "axe";
+        this.description = "Axe";
+        this.character = character;
     }
 
     @Override
@@ -15,6 +17,6 @@ public class Axe implements AttackInventory {
 
     @Override
     public String getDescription() {
-        return description;
+        return character.getDescription() + " with attack inventory " + description;
     }
 }

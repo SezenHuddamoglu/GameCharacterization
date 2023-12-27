@@ -1,9 +1,12 @@
 // DeadHealthState.java
 public class DeadState implements CharacterState {
     ConcreteCharacter character;
+    int health;
 
-    public DeadState(ConcreteCharacter character) {
+
+    public DeadState(ConcreteCharacter character, int health) {
         this.character = character;
+        this.health=health;
     }
 
     @Override

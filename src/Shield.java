@@ -1,11 +1,12 @@
 public class Shield implements DefenseInventory {
     private int defensePower;
     private String description;
+    Character character;
 
-
-    public Shield() {
+    public Shield(Character character) {
         this.defensePower = 15;
-        this.description = "shield";
+        this.description = "Shield";
+        this.character=character;
     }
 
     @Override
@@ -15,7 +16,7 @@ public class Shield implements DefenseInventory {
 
     @Override
     public String getDescription() {
-        return description;
+        return character.getDescription() + " with defense inventory " + description;
     }
 }
 
