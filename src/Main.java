@@ -12,7 +12,7 @@ public class Main {
         curlyHairCharacter.getCurlyHair();
 */
         // Create a concrete character
-        Subject character = new ConcreteCharacter();
+       /* Subject character = new ConcreteCharacter();
 
         // Display the character
         character.display();
@@ -26,7 +26,7 @@ public class Main {
 
         // Simulate gameplay with the new state
         character.takeDamage(30);
-        character.getStronger(15);
+        character.getStronger(15);*/
 
     }
 }

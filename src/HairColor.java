@@ -11,8 +11,4 @@ public class HairColor implements Features {
         character.setHairColor(hairColor);
     }
 
-    @Override
-    public String getDescription() {
-        return decoratedCharacter.getDescription() + " with " + hairColor;
-    }
 }

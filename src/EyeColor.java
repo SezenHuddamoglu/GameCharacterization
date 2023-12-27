@@ -7,7 +7,7 @@ public class EyeColor implements Features {
 
     @Override
     public void decorate(Character character) {
-        character.setHairColor(eyeColor);
+        character.setEyeColor(eyeColor);
     }
 }
 
