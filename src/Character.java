@@ -5,9 +5,13 @@ public abstract class Character {
     private String hairStyle;
     private String hairColor;
     private DefenseInventory defenseInventory;
-    private int health;
+    private int health=100;
     private int currentDefensePower;
     private int currentAttackPower;
+    private CharacterState wellHealth;
+    private CharacterState midHealth;
+    private CharacterState lowHealth;
+    private CharacterState dead;
     private CharacterState currentState;
 
 
@@ -23,7 +27,14 @@ public abstract class Character {
     public abstract void takeDamage(int damage);
     public abstract void getStronger(int strength);
     public abstract void setCurrentState(CharacterState state);
-    public abstract void setAttackPower(AttackInventory attackInventory);
+   // public abstract void setAttackPower(AttackInventory attackInventory);
+
+
+    public CharacterState getHealthState() {
+        return currentState;
+    }
+
+
 
     public CharacterState getCurrentState() {
         return currentState;
@@ -34,7 +45,7 @@ public abstract class Character {
     }
 
     public String getEyeColor() {
-        return eyeColor;
+        return this.eyeColor;
     }
 
     public String getHairStyle() {
@@ -60,5 +71,15 @@ public abstract class Character {
     public int getCurrentAttackPower() {
         return currentAttackPower;
     }
+
+    public abstract void setHealthState(CharacterState HealthState);
+
+   public abstract CharacterState getDead();
+
+    public abstract CharacterState getMidHealth();
+    public abstract CharacterState getLowHealth();
+
+
+    public abstract CharacterState getWellHealth();
 }
 

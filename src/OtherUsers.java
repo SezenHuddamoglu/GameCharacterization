@@ -1,36 +1,28 @@
 public class OtherUsers implements Observer {
-    private ConcreteCharacter character;
-    private CharacterState oldState;
-    private int oldHealth;
-    private int oldAttackPower;
-    private int oldDefensePower;
+    private ConcreteCharacter subject;
 
-    public OtherUsers(ConcreteCharacter character) {
-        this.character = character;
+    public OtherUsers(ConcreteCharacter subject) {
+        this.subject = subject;
+        this.subject.registerObserver(this);
     }
 
     @Override
-    public void update() {
-        // Sadece değişen özellikleri yazdırıyoruz
-        if (character.getCurrentState() != oldState) {
-            System.out.println("Karakter durumu değişti: " + character.getCurrentState().getClass().getSimpleName());
-            oldState = character.getCurrentState();
-        }
+    public void update(String eyeColor, String hairColor, String hairStyle,
+                AttackInventory attackInventory, DefenseInventory defenseInventory,
+                int health, int currentDefensePower, int currentAttackPower,
+                CharacterState currentState){
+        subject.setEyeColor(eyeColor);
+        subject.setHairColor(hairColor);
+        subject.setHairStyle(hairStyle);
+        subject.setAttackInventory(attackInventory);
+        subject.setDefenseInventory(defenseInventory);
+        subject.setCurrentAttackPower(currentAttackPower);
+        subject.setCurrentDefensePower(currentDefensePower);
+        subject.setHealth(health);
+        subject.setCurrentState(currentState);
+        System.out.println("updated");
 
-        if (character.getHealth() != oldHealth) {
-            System.out.println("Karakter sağlığı: " + character.getHealth());
-            oldHealth = character.getHealth();
-        }
-
-        if (character.getCurrentAttackPower() != oldAttackPower) {
-            System.out.println("Karakter saldırı gücü: " + character.getCurrentAttackPower());
-            oldAttackPower = character.getCurrentAttackPower();
-        }
-
-        if (character.getCurrentDefensePower() != oldDefensePower) {
-            System.out.println("Karakter savunma gücü: " + character.getCurrentDefensePower());
-            oldDefensePower = character.getCurrentDefensePower();
-        }
     }
+
 }
 

@@ -1,17 +1,20 @@
 public class Gunshot implements AttackInventory {
-    Character decoratedCharacter;
+    private int attackPower;
+    private String description;
 
-    public Gunshot(Character decoratedCharacter) {
-        this.decoratedCharacter=decoratedCharacter;
-        // this.axeAttackPower = axeAttackPower;
+
+    public Gunshot() {
+        this.attackPower = 30;
+        this.description = "gunshot";
     }
 
+    @Override
     public int getAttackPower() {
-        return 10;
+        return attackPower;
     }
 
-
+    @Override
     public String getDescription() {
-        return decoratedCharacter.getDescription() + " equipped with Gunshot";
+        return description;
     }
 }

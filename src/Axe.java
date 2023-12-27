@@ -2,9 +2,10 @@ public class Axe implements AttackInventory {
     private int attackPower;
     private String description;
 
-    public Axe(int attackPower, String description) {
-        this.attackPower = attackPower;
-        this.description = description;
+
+    public Axe() {
+        this.attackPower = 20;
+        this.description = "axe";
     }
 
     @Override

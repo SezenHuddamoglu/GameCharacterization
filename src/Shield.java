@@ -1,18 +1,21 @@
 public class Shield implements DefenseInventory {
-    Character decoratedCharacter;
+    private int defensePower;
+    private String description;
 
-    public Shield(Character decoratedCharacter) {
-        this.decoratedCharacter=decoratedCharacter;
 
+    public Shield() {
+        this.defensePower = 15;
+        this.description = "shield";
     }
 
+    @Override
     public int getDefensePower() {
-        // Add the attack power of the Axe to the currentAttackPower of the decorated character
-        return decoratedCharacter.setCurrentDefensePower(15);
+        return defensePower;
     }
 
-
+    @Override
     public String getDescription() {
-        return decoratedCharacter.getDescription() + " equipped with Shield";
+        return description;
     }
 }
+

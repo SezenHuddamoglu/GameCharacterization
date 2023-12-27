@@ -5,21 +5,42 @@ public class Main {
         ConcreteCharacter character = new ConcreteCharacter("mavi", "siyah", "duz");
         System.out.println(character.getDescription());
         character.setEyeColor("yesil");
-        character.takeDamage(20);
+        System.out.println(character.getHealth());
+        character.takeDamage(10);
+        //System.out.println(character.getCurrentState());
+        character.takeDamage(40);
+       // System.out.println(character.getCurrentState());
+
         // character.setCurrentAttackPower(50);
 
         // Karakterin durumunu yazdır
-        character.display();
-        System.out.println(character.getDescription());
+       // character.display();
+        //System.out.println(character.getDescription());
 
-        Axe axeInventory = new Axe(20, "Axe");
+        Axe axeInventory = new Axe();
+        Shield shield= new Shield();
+        Armour armour= new Armour();
+        Gunshot gunshot= new Gunshot();
 
         // ConcreteCharacter oluştur ve axeInventory'yi ayarla
         ConcreteCharacter player = new ConcreteCharacter("mavi", "siyah", "duz");
-        player.setAttackPower(axeInventory);
+        player.setAttackInventory(axeInventory);
+        player.setDefenseInventory(shield);
+        System.out.println(player.getDescription());
 
         // Karakterin güç seviyesini kontrol et
         System.out.println("Player's Current Attack Power: " + player.getCurrentAttackPower());
+        System.out.println("Player's Current Defense Power: " + player.getCurrentDefensePower());
+        System.out.println(player.getDescription());
+
+        player.setAttackInventory(gunshot);
+        System.out.println("Player's Current Attack Power: " + player.getCurrentAttackPower());
+        player.setDefenseInventory(armour);
+        System.out.println(player.getDescription());
+
+        // Karakterin güç seviyesini kontrol et
+        System.out.println("Player's Current Attack Power: " + player.getCurrentAttackPower());
+        System.out.println("Player's Current Defense Power: " + player.getCurrentDefensePower());
     }
 }
 

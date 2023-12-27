@@ -1,19 +1,22 @@
 public class Armour implements DefenseInventory{
-    Character decoratedCharacter;
+    private int defensePower;
+    private String description;
 
-    public Armour(Character decoratedCharacter) {
-        this.decoratedCharacter=decoratedCharacter;
 
+    public Armour() {
+        this.defensePower = 25;
+        this.description = "armour";
     }
 
+    @Override
     public int getDefensePower() {
-        // Add the attack power of the Axe to the currentAttackPower of the decorated character
-        return decoratedCharacter.setCurrentDefensePower(20);
+        return defensePower;
     }
 
-
+    @Override
     public String getDescription() {
-        return decoratedCharacter.getDescription() + " equipped with Armour";
+        return description;
     }
 }
+
 
