@@ -58,8 +58,15 @@ public class Main {
         character.takeDamage(10);
         character.takeDamage(10);
         character.getStronger(10);
+        character.getStronger(20);
+        character.getStronger(10);
         character.takeDamage(30);
+        character.takeDamage(20);
+        character.takeDamage(30);
+        character.takeDamage(20);
         character.takeDamage(100);
+
+        character.getStronger(10);
     }
 }
 

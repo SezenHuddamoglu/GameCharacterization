@@ -5,19 +5,22 @@ public class MidHealthState implements CharacterState {
     int health;
 
     // Constructor for the MidHealthState class, takes a ConcreteCharacter object and its initial health as parameters.
-    public MidHealthState(ConcreteCharacter character, int health) {
+    public MidHealthState(ConcreteCharacter character) {
         this.character = character;
-        this.health = health;
+        this.health =character.getHealth();
     }
+
 
     // Implementation of the takeDamage method from the CharacterState interface.
     @Override
     public void takeDamage(ConcreteCharacter character, int damage) {
         // Display a message indicating that the character is taking damage.
         System.out.println("Taking damage");
+        health=character.getHealth();
 
         // Update the health based on the received damage.
         health = health - damage;
+        health=health(health);
 
         // Display the current damage and health.
         System.out.println("damage: " + damage + " health: " + health);
@@ -48,9 +51,11 @@ public class MidHealthState implements CharacterState {
     public void getStronger(ConcreteCharacter character, int strength) {
         // Display a message indicating that the character is getting stronger.
         System.out.println("Getting stronger");
+        health=character.getHealth();
 
         // Increase the health based on the received strength.
         health = health + strength;
+        health=health(health);
 
         // Display the current strength and health.
         System.out.println("strength: " + strength + " health: " + health);
@@ -69,4 +74,17 @@ public class MidHealthState implements CharacterState {
             System.out.println("Still in mid health");
         }
     }
+
+    @Override
+    public int health(int health) {
+        if (health > 100) {
+            return 100;
+        } else if (health < 0) {
+            return 0;
+        }
+        return health;
+
+
+    }
+
 }

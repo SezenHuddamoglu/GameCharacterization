@@ -5,9 +5,9 @@ public class WellHealthState implements CharacterState {
     int health;
 
     // Constructor for the WellHealthState class, takes a ConcreteCharacter object and its initial health as parameters.
-    public WellHealthState(ConcreteCharacter character, int health) {
+    public WellHealthState(ConcreteCharacter character) {
         this.character = character;
-        this.health = health;
+        this.health =character.getHealth();
     }
 
     // Implementation of the takeDamage method from the CharacterState interface.
@@ -15,9 +15,11 @@ public class WellHealthState implements CharacterState {
     public void takeDamage(ConcreteCharacter character, int damage) {
         // Display a message indicating that the character is taking damage.
         System.out.println("Taking damage");
+        health=character.getHealth();
 
         // Update the health based on the received damage.
         health = health - damage;
+        health=health(health);
 
         // Display the current damage and health.
         System.out.println("damage: " + damage + " health: " + health);
@@ -45,15 +47,27 @@ public class WellHealthState implements CharacterState {
     public void getStronger(ConcreteCharacter character, int strength) {
         // Display a message indicating that the character is getting stronger.
         System.out.println("Getting stronger");
-
+        health=character.getHealth();
         // Increase the health based on the received strength.
         health += strength;
-
+        health=health(health);
         // Display the current strength and updated health.
         System.out.println("Strength: " + strength + " health: " + health);
 
         // Set the updated health to the character.
         character.setHealth(health);
+    }
+
+    @Override
+    public int health(int health) {
+        if (health > 100) {
+            return 100;
+        } else if (health < 0) {
+            return 0;
+        }
+        return health;
+
+
     }
 }
 

@@ -35,10 +35,10 @@ public class ConcreteCharacter extends Character implements Subject {
         defenseInventory = null;
 
         // Initialize character states for different health levels.
-        wellHealth = new WellHealthState(this, this.getHealth());
-        midHealth = new MidHealthState(this, this.getHealth());
-        lowHealth = new LowHealthState(this, this.getHealth());
-        dead = new DeadState(this, this.getHealth());
+        wellHealth = new WellHealthState(this);
+        midHealth = new MidHealthState(this);
+        lowHealth = new LowHealthState(this);
+        dead = new DeadState(this);
 
         // Set initial health and state based on health level.
         health = 100;
@@ -130,8 +130,15 @@ public class ConcreteCharacter extends Character implements Subject {
     // Override method to set the health and notify observers.
     @Override
     public void setHealth(int health) {
+
         this.health = health;
+
         notifyObservers();
+    }
+
+    @Override
+    public int getHealth() {
+        return health;
     }
 
     // Method to handle taking damage, delegates to the current state and notifies observers.
@@ -177,6 +184,7 @@ public class ConcreteCharacter extends Character implements Subject {
         currentState = state;
         notifyObservers();
     }
+
     //Methods to get the State
     @Override
     public CharacterState getLowHealth() {
