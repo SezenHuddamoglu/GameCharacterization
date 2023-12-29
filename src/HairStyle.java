@@ -1,4 +1,4 @@
-public class HairStyle implements Features {
+public class HairStyle extends Features {
 
     // Private instance variable to store the hair style.
     private String hairStyle;

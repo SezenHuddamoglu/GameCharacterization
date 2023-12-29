@@ -1,4 +1,4 @@
-public class Axe implements AttackInventory {
+public class Axe extends AttackInventory {
 
     // Private instance variables to store the attack power and description of the axe.
     private int attackPower;

@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
         // Create a ConcreteCharacter object with initial characteristics.
+
         ConcreteCharacter character = new ConcreteCharacter("blue", "black", "curly");
         System.out.println(character.getDescription());
         character.setEyeColor("green");
@@ -11,7 +12,11 @@ public class Main {
         System.out.println(character.getDescription());
         character.setHairStyle("straight");
         System.out.println(character.getDescription());
+        Punching punchingAbility = new Punching();
+        Kicking kickingAbility = new Kicking();
 
+       // character.setPunchingAbility(punchingAbility);
+        //character.setKickingAbility(kickingAbility);
         // Create observer objects for the character.
         OtherUsers otherUsers1 = new OtherUsers(character);
         TheSystem systemObserver = new TheSystem(character);
@@ -63,9 +68,10 @@ public class Main {
         character.takeDamage(30);
         character.takeDamage(20);
         character.takeDamage(30);
+        character.getStronger(50);
         character.takeDamage(20);
         character.takeDamage(100);
-
+        character.takeDamage(10);
         character.getStronger(10);
     }
 }

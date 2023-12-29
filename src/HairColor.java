@@ -1,4 +1,4 @@
-public class HairColor implements Features {
+public class HairColor extends Features {
 
     // Private instance variables to store the decorated character and the hair color.
     Character decoratedCharacter;

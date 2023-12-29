@@ -1,18 +1,18 @@
 public class LowHealthState implements CharacterState {
 
     // Private instance variables to store the character and its health.
-    ConcreteCharacter character;
+    Character character;
     int health;
 
     // Constructor for the LowHealthState class, takes a ConcreteCharacter object and its initial health as parameters.
-    public LowHealthState(ConcreteCharacter character) {
+    public LowHealthState(Character character) {
         this.character = character;
         this.health = character.getHealth();
     }
 
     // Implementation of the takeDamage method from the CharacterState interface.
     @Override
-    public void takeDamage(ConcreteCharacter dcharacter, int damage) {
+    public void takeDamage(Character dcharacter, int damage) {
         // Display a message indicating that the character is taking damage.
         System.out.println("Taking damage");
         health=dcharacter.getHealth();
@@ -41,7 +41,7 @@ public class LowHealthState implements CharacterState {
 
     // Implementation of the getStronger method from the CharacterState interface.
     @Override
-    public void getStronger(ConcreteCharacter dcharacter, int strength) {
+    public void getStronger(Character dcharacter, int strength) {
         // Display a message indicating that the character is getting stronger.
         System.out.println("Getting stronger");
         health=dcharacter.getHealth();

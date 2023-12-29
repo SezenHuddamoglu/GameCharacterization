@@ -1,9 +1,9 @@
-public interface DefenseInventory {
+public abstract class DefenseInventory {
 
     // Declare a method to get the defense power of the entity implementing this interface.
-    int getDefensePower();
+    abstract int getDefensePower();
 
     // Declare a method to get the description of the defense inventory.
-    String getDescription();
+    abstract String getDescription();
 }
 

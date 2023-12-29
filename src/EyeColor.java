@@ -1,4 +1,4 @@
-public class EyeColor implements Features {
+public class EyeColor extends Features {
 
     // Private instance variable to store the eye color.
     private String eyeColor;

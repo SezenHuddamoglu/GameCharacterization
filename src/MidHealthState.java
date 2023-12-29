@@ -1,11 +1,11 @@
 public class MidHealthState implements CharacterState {
 
     // Private instance variables to store the character and its health.
-    ConcreteCharacter character;
+    Character character;
     int health;
 
     // Constructor for the MidHealthState class, takes a ConcreteCharacter object and its initial health as parameters.
-    public MidHealthState(ConcreteCharacter character) {
+    public MidHealthState(Character character) {
         this.character = character;
         this.health =character.getHealth();
     }
@@ -13,7 +13,7 @@ public class MidHealthState implements CharacterState {
 
     // Implementation of the takeDamage method from the CharacterState interface.
     @Override
-    public void takeDamage(ConcreteCharacter character, int damage) {
+    public void takeDamage(Character character, int damage) {
         // Display a message indicating that the character is taking damage.
         System.out.println("Taking damage");
         health=character.getHealth();
@@ -48,7 +48,7 @@ public class MidHealthState implements CharacterState {
 
     // Implementation of the getStronger method from the CharacterState interface.
     @Override
-    public void getStronger(ConcreteCharacter character, int strength) {
+    public void getStronger(Character character, int strength) {
         // Display a message indicating that the character is getting stronger.
         System.out.println("Getting stronger");
         health=character.getHealth();

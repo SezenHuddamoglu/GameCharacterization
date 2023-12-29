@@ -1,4 +1,4 @@
-public class Armour implements DefenseInventory {
+public class Armour extends DefenseInventory {
 
     // Private instance variables to store the defense power and description of the armour.
     private int defensePower;

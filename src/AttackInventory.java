@@ -1,9 +1,11 @@
-public interface AttackInventory {
+import javax.swing.table.TableRowSorter;
+
+public abstract class AttackInventory {
 
     // Declare a method to get the attack power of the entity implementing this interface.
-    int getAttackPower();
+    abstract int getAttackPower();
 
     // Declare a method to get the description of the attack inventory.
-    String getDescription();
+    abstract String getDescription();
 }
 
