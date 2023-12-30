@@ -17,6 +17,8 @@ public abstract class Character implements Subject{
     private CharacterState dead;
     private CharacterState currentState;
     private ArrayList<Observer> observers;
+    private ArrayList<DefaultAbilities> defaultAbilities;
+    private DefaultAbilities currentDefaultAbiliy;
 
     public Character(){
         this.eyeColor = "Brown";
@@ -26,12 +28,14 @@ public abstract class Character implements Subject{
         defenseInventory = null;
 
         observers = new ArrayList();
+        defaultAbilities = new ArrayList();
         //currentState=wellHealth;
         // Initialize character states for different health levels.
         wellHealth = new WellHealthState(this);
         midHealth = new MidHealthState(this);
         lowHealth = new LowHealthState(this);
         dead = new DeadState(this);
+
 
         // Set initial health and state based on health level.
      //   health = 100;
@@ -64,7 +68,24 @@ public abstract class Character implements Subject{
             );
         }
     }
+
+    public ArrayList<DefaultAbilities> getDefaultAbilities() {
+        return defaultAbilities;
+    }
+
+    public void setDefaultAbilities(DefaultAbilities defaultAbility) {
+        this.defaultAbilities.add(defaultAbility);
+    }
+
     // Abstract methods to be implemented by subclasses to set various characteristics.
+    public void printDefaultAbilities() {
+        System.out.print("Default Abilities: ");
+        for (DefaultAbilities ability : defaultAbilities) {
+            System.out.print(ability.getAbility()+ " , ");
+
+
+        } System.out.println();
+    }
 
 
     public void setEyeColor(String eyeColor) {
@@ -107,6 +128,27 @@ public abstract class Character implements Subject{
         this.currentAttackPower = currentAttackPower;
         notifyObservers();
     }
+
+    public DefaultAbilities getCurrentDefaultAbiliy() {
+        return currentDefaultAbiliy;
+    }
+
+    public void setCurrentDefaultAbiliy(DefaultAbilities currentDefaultAbiliy) {
+            this.currentDefaultAbiliy = currentDefaultAbiliy;
+    }
+
+    public void setDefaultAbilityPower(DefaultAbilities ability) {
+        if (ability == null) {
+            // Eğer ability null ise, bir şey yapma
+            return;
+        }
+
+        if (attackInventory == null) {
+            setCurrentDefaultAbiliy(ability);
+            this.currentAttackPower = ability.getPower();
+        }
+    }
+
 
     public int getCurrentAttackPower() {
         return currentAttackPower;

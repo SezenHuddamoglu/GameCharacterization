@@ -19,17 +19,9 @@ public class Main {
         Features eyeColorDecorator = new EyeColor();
         eyeColorDecorator.decorate(character, "Blue");
         System.out.println(character.getDescription());
-       /* ConcreteCharacter character = new ConcreteCharacter();
-        System.out.println(character.getDescription());
-        character.setEyeColor("green");
-        character.setHairColor("blonde");
-        System.out.println(character.getDescription());
-        character.setHairStyle("straight");
-        System.out.println(character.getDescription());*/
+        character.printDefaultAbilities();
 
 
-        Punching punchingAbility = new Punching();
-        Kicking kickingAbility = new Kicking();
 
        // character.setPunchingAbility(punchingAbility);
         //character.setKickingAbility(kickingAbility);
@@ -51,6 +43,7 @@ public class Main {
         Shield shield = new Shield(character);
         Armour armour = new Armour(character);
         Gunshot gunshot = new Gunshot(character);
+
         System.out.println("Character's Current Attack Power: " + character.getCurrentAttackPower());
         System.out.println("Character's Current Defense Power: " + character.getCurrentDefensePower());
 

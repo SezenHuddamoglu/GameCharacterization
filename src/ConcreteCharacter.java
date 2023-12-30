@@ -4,37 +4,31 @@ public class ConcreteCharacter extends Character {
 
     // Private instance variables to store character attributes, inventories, health, and states.
     private ArrayList<Observer> observers;
-   /* private AttackInventory attackInventory;
-    private String eyeColor;
-    private String hairStyle;
-    private String hairColor;
-    private DefenseInventory defenseInventory;
-    private int health = 100;
-    private int currentDefensePower;
-    private int currentAttackPower;
-
-    // Character states representing different health states.
-    private CharacterState wellHealth;
-    private CharacterState midHealth;
-    private CharacterState lowHealth;
-    private CharacterState dead;
-    private CharacterState currentState;*/
+   // private ArrayList<DefaultAbilities> defaultAbilities;
+    private DefaultAbilities kicking;
+    private DefaultAbilities punching;
 
     // Constructor for the ConcreteCharacter class.
     public ConcreteCharacter() {
         // Initialize character attributes with provided values.
         super();
-       /* this.eyeColor = eyeColor;
-        this.hairColor = hairColor;
-*/
+
         // Initialize the list of observers.
         observers = new ArrayList();
+      //  defaultAbilities = new ArrayList();
 
-        // Initialize attackInventory and defenseInventory to null.
+        // Create kicking and punching objects
+        kicking = new Kicking(this); // Assuming you have a Kicking class similar to Punching
+        punching = new Punching(this);
+
+        // Add kicking and punching to the list of default abilities
+        setDefaultAbilities(kicking);
+        setDefaultAbilities(punching);
+
+        // Set default ability power for punching
+        setDefaultAbilityPower(punching);
 
     }
-
-
 
     // Override method to get a description of the character.
     @Override

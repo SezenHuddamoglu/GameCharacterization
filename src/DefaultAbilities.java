@@ -1,3 +1,4 @@
 public abstract class DefaultAbilities {
-    abstract void getAbility();
+    abstract String getAbility();
+    abstract int getPower();
 }
