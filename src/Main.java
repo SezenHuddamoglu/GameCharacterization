@@ -5,13 +5,29 @@ public class Main {
 
         // Create a ConcreteCharacter object with initial characteristics.
 
-        ConcreteCharacter character = new ConcreteCharacter("blue", "black", "curly");
+
+        ConcreteCharacter character = new ConcreteCharacter();
+        System.out.println(character.getDescription());
+        Features hairColorDecorator = new HairColor();
+        hairColorDecorator.decorate(character, "Red");
+        System.out.println(character.getDescription());
+
+        Features hairStyleDecorator = new HairStyle();
+        hairStyleDecorator.decorate(character, "Curly");
+        System.out.println(character.getDescription());
+
+        Features eyeColorDecorator = new EyeColor();
+        eyeColorDecorator.decorate(character, "Blue");
+        System.out.println(character.getDescription());
+       /* ConcreteCharacter character = new ConcreteCharacter();
         System.out.println(character.getDescription());
         character.setEyeColor("green");
         character.setHairColor("blonde");
         System.out.println(character.getDescription());
         character.setHairStyle("straight");
-        System.out.println(character.getDescription());
+        System.out.println(character.getDescription());*/
+
+
         Punching punchingAbility = new Punching();
         Kicking kickingAbility = new Kicking();
 

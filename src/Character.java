@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public abstract class Character {
+public abstract class Character implements Subject{
 
     // Private instance variables to store various characteristics and states of the character.
     private String eyeColor;
@@ -16,13 +16,16 @@ public abstract class Character {
     private CharacterState lowHealth;
     private CharacterState dead;
     private CharacterState currentState;
+    private ArrayList<Observer> observers;
 
-    public Character(String eyeColor, String hairColor, String hairStyle){
-        this.eyeColor = eyeColor;
-        this.hairColor = hairColor;
-        this.hairStyle = hairStyle;
+    public Character(){
+        this.eyeColor = "Brown";
+        this.hairColor = "Brown";
+        this.hairStyle = "Brown";
         attackInventory = null;
         defenseInventory = null;
+
+        observers = new ArrayList();
         //currentState=wellHealth;
         // Initialize character states for different health levels.
         wellHealth = new WellHealthState(this);
@@ -37,12 +40,36 @@ public abstract class Character {
             currentState = wellHealth;
         }
     }
+    // Method to register an observer.
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
 
+    // Method to remove an observer.
+    public void removeObserver(Observer o) {
+        int i = observers.indexOf(o);
+        if (i >= 0) {
+            observers.remove(i);
+        }
+    }
+
+    // Method to notify all observers of changes.
+    public void notifyObservers() {
+        for (int i = 0; i < observers.size(); i++) {
+            Observer observer = (Observer) observers.get(i);
+            observer.update(
+                    eyeColor, hairColor, hairStyle,
+                    attackInventory, defenseInventory,
+                    health, currentDefensePower, currentAttackPower, currentState
+            );
+        }
+    }
     // Abstract methods to be implemented by subclasses to set various characteristics.
 
 
     public void setEyeColor(String eyeColor) {
         this.eyeColor = eyeColor;
+
     }
 
     public String getEyeColor() {
@@ -51,6 +78,7 @@ public abstract class Character {
 
     public void setHairColor(String hairColor) {
         this.hairColor = hairColor;
+        notifyObservers();
     }
 
     public String getHairColor() {
@@ -59,6 +87,7 @@ public abstract class Character {
 
     public void setHairStyle(String hairStyle) {
         this.hairStyle = hairStyle;
+        notifyObservers();
     }
 
     public String getHairStyle() {
@@ -68,6 +97,7 @@ public abstract class Character {
     public void setAttackInventory(AttackInventory attackInventory) {
         this.attackInventory = attackInventory;
         this.currentAttackPower = attackInventory.getAttackPower();
+        notifyObservers();
     }
     public AttackInventory getAttackInventory() {
         return attackInventory;
@@ -75,6 +105,7 @@ public abstract class Character {
 
     public void setCurrentAttackPower(int currentAttackPower) {
         this.currentAttackPower = currentAttackPower;
+        notifyObservers();
     }
 
     public int getCurrentAttackPower() {
@@ -83,6 +114,7 @@ public abstract class Character {
 
     public void setDefenseInventory(DefenseInventory defenseInventory) {
         this.defenseInventory = defenseInventory;
+        notifyObservers();
     }
 
     public DefenseInventory getDefenseInventory() {
@@ -91,7 +123,9 @@ public abstract class Character {
 
     public int setCurrentDefensePower(int defensePower) {
         this.currentDefensePower = defensePower;
+        notifyObservers();
         return defensePower;
+
     }
 
     public int getCurrentDefensePower() {
@@ -100,6 +134,7 @@ public abstract class Character {
 
     public void setHealth(int health) {
         this.health = health;
+        notifyObservers();
     }
 
     public int getHealth() {
@@ -128,6 +163,7 @@ public abstract class Character {
 
     public void setHealthState(CharacterState state) {
         currentState = state;
+        notifyObservers();
     }
     public void takeDamage(int damage) {
         currentState.takeDamage(this, damage);
@@ -146,7 +182,7 @@ public abstract class Character {
     }
 
     public String getDescription() {
-        return "A character with " + this.eyeColor + ", " + this.hairStyle + ", " + this.hairColor;
+        return "A character with " + this.eyeColor + " eyes, and" + this.hairStyle + ", " + this.hairColor + " hair";
     }
 
 }
