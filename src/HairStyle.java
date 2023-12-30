@@ -10,9 +10,9 @@ public class HairStyle extends Features {
 
     // Implementation of the decorate method from the Features interface.
     @Override
-    public void decorate(Character character, String feature) {
+    public void decorate(Character character, String hairStyle) {
         // Set the hair style of the provided Character object.
-        character.setHairStyle(feature);
+        character.setHairStyle(hairStyle);
     }
 }
 
