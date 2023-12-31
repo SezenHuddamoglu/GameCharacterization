@@ -4,7 +4,6 @@ public class ConcreteCharacter extends Character {
 
     // Private instance variables to store character attributes, inventories, health, and states.
     private ArrayList<Observer> observers;
-   // private ArrayList<DefaultAbilities> defaultAbilities;
     private DefaultAbilities kicking;
     private DefaultAbilities punching;
 
@@ -15,7 +14,6 @@ public class ConcreteCharacter extends Character {
 
         // Initialize the list of observers.
         observers = new ArrayList();
-      //  defaultAbilities = new ArrayList();
 
         // Create kicking and punching objects
         kicking = new Kicking(this); // Assuming you have a Kicking class similar to Punching
@@ -24,9 +22,6 @@ public class ConcreteCharacter extends Character {
         // Add kicking and punching to the list of default abilities
         setDefaultAbilities(kicking);
         setDefaultAbilities(punching);
-
-        // Set default ability power for punching
-        setDefaultAbilityPower(punching);
 
     }
 

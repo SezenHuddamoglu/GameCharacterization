@@ -23,7 +23,7 @@ public abstract class Character implements Subject{
     public Character(){
         this.eyeColor = "Brown";
         this.hairColor = "Brown";
-        this.hairStyle = "Brown";
+        this.hairStyle = "Straight";
         attackInventory = null;
         defenseInventory = null;
 
@@ -81,11 +81,13 @@ public abstract class Character implements Subject{
     public void printDefaultAbilities() {
         System.out.print("Default Abilities: ");
         for (DefaultAbilities ability : defaultAbilities) {
-            System.out.print(ability.getAbility()+ " , ");
-
-
-        } System.out.println();
+            if (ability != null) {
+                System.out.print(ability.getAbility() + " , ");
+            }
+        }
+        System.out.println();
     }
+
 
 
     public void setEyeColor(String eyeColor) {
@@ -143,7 +145,7 @@ public abstract class Character implements Subject{
             return;
         }
 
-        if (attackInventory == null) {
+        if (attackInventory == null && defaultAbilities.contains(ability)) {
             setCurrentDefaultAbiliy(ability);
             this.currentAttackPower = ability.getPower();
         }

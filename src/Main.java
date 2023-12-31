@@ -37,15 +37,21 @@ public class Main {
 
         // Remove an observer from the character.
         character.removeObserver(otherUsers2);
-
+        DefaultAbilities punching = new Punching(character);
+        character.setDefaultAbilityPower(punching);
         // Create inventory items for the character.
         Axe axe = new Axe(character);
         Shield shield = new Shield(character);
         Armour armour = new Armour(character);
         Gunshot gunshot = new Gunshot(character);
 
+
         System.out.println("Character's Current Attack Power: " + character.getCurrentAttackPower());
         System.out.println("Character's Current Defense Power: " + character.getCurrentDefensePower());
+
+        DefaultAbilities kicking = new Kicking(character);
+        character.setDefaultAbilityPower(kicking);
+        System.out.println("Character's Current Attack Power: " + character.getCurrentAttackPower());
 
         // Equip the character with attack and defense items.
         character.setAttackInventory(axe);

@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Kicking extends DefaultAbilities {
     int power;
     private String description;
@@ -19,4 +21,5 @@ public class Kicking extends DefaultAbilities {
     int getPower() {
         return power;
     }
+
 }

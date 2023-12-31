@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Punching extends DefaultAbilities {
     int power;
     private String description;
@@ -10,6 +12,7 @@ public class Punching extends DefaultAbilities {
         // Set the character reference to the provided Character object.
         this.character = character;
     }
+
     @Override
     public String getAbility() {
         return description;
