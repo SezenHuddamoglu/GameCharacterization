@@ -36,5 +36,9 @@ public class TheSystem implements Observer {
         this.currentDefensePower = currentDefensePower;
         this.currentState = currentState;
     }
+    @Override
+    public String toString() {
+        return "TheSystem Observer";
+    }
 }
 

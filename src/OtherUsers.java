@@ -36,6 +36,9 @@ public class OtherUsers implements Observer {
         this.currentDefensePower = currentDefensePower;
         this.currentState = currentState;
     }
+    public String toString() {
+        return "OtherUsers Observer";
+    }
 }
 
 

@@ -48,7 +48,7 @@ public abstract class Character implements Subject{
     }
     // Method to register an observer.
     public void registerObserver(Observer o) {
-        observers.add(o);
+        if (!observers.contains(o)) { observers.add(o); }
     }
 
     // Method to remove an observer.
@@ -230,6 +230,18 @@ public abstract class Character implements Subject{
     public String getDescription() {
         return "A character with " + this.eyeColor + " eyes, and" + this.hairStyle + ", " + this.hairColor + " hair";
     }
+    public void printObservers() {
+        System.out.println("Registered Observers (Count: " + observers.size() + "):");
+
+        for (int i = 0; i < observers.size(); i++) {
+            Observer observer = observers.get(i);
+            System.out.print("Observer " + (i + 1) + " -> ");
+            System.out.println("Type:" + observer.getClass().getSimpleName());
+        }
+    }
+
+
+
 
 }
 

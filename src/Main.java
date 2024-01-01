@@ -4,6 +4,12 @@ public class Main {
         System.out.println("----------------Welcome to the game-----------------");
 
         ConcreteCharacter character = new ConcreteCharacter();
+
+        System.out.println("Default features: "+ character.getDescription());
+        character.printDefaultAbilities();
+
+        System.out.println();
+
         OtherUsers otherUsers1 = new OtherUsers(character);
         TheSystem systemObserver = new TheSystem(character);
         OtherUsers otherUsers2 = new OtherUsers(character);
@@ -11,11 +17,8 @@ public class Main {
         // Register observers to the character.
         character.registerObserver(otherUsers1);
         character.registerObserver(systemObserver);
-        character.registerObserver(otherUsers1);
-
-
-        System.out.println("Default features: "+ character.getDescription());
-        character.printDefaultAbilities();
+        character.registerObserver(otherUsers2);
+        character.printObservers();
 
         System.out.println();
 
@@ -35,6 +38,8 @@ public class Main {
 
         // Remove an observer from the character.
         character.removeObserver(otherUsers2);
+        character.printObservers();
+        System.out.println();
 
         DefaultAbilities punching = new Punching(character);
         character.setDefaultAbilityPower(punching);
