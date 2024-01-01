@@ -1,5 +1,4 @@
 public class Shield extends DefenseInventory {
-
     // Private instance variables to store the defense power, description, and associated character.
     private int defensePower;
     private String description;

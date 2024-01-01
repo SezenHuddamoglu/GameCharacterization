@@ -13,8 +13,6 @@ public class WellHealthState implements CharacterState {
     // Implementation of the takeDamage method from the CharacterState interface.
     @Override
     public void takeDamage(Character character, int damage) {
-        // Display a message indicating that the character is taking damage.
-        System.out.println("Taking damage");
         health=character.getHealth();
 
         // Update the health based on the received damage.
@@ -22,7 +20,7 @@ public class WellHealthState implements CharacterState {
         health=health(health);
 
         // Display the current damage and health.
-        System.out.println("damage: " + damage + " health: " + health);
+        System.out.print("damage: " + damage + " health: " + health+"-------");
 
         // Set the updated health to the character.
         character.setHealth(health);
@@ -38,21 +36,20 @@ public class WellHealthState implements CharacterState {
             System.out.println("In low health");
         } else if (health <= 0) {
             character.setHealthState(character.getDead());
-            System.out.println("Dead state");
+            System.out.println("You're dead");
         }
     }
 
     // Implementation of the getStronger method from the CharacterState interface.
     @Override
     public void getStronger(Character character, int strength) {
-        // Display a message indicating that the character is getting stronger.
-        System.out.println("Getting stronger");
         health=character.getHealth();
         // Increase the health based on the received strength.
         health += strength;
         health=health(health);
         // Display the current strength and updated health.
-        System.out.println("Strength: " + strength + " health: " + health);
+        System.out.print("Strength: " + strength + " health: " + health+"-------");
+        System.out.println("Still in well health");
 
         // Set the updated health to the character.
         character.setHealth(health);
@@ -66,8 +63,6 @@ public class WellHealthState implements CharacterState {
             return 0;
         }
         return health;
-
-
     }
 }
 

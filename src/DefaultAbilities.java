@@ -1,9 +1,14 @@
 import java.util.Objects;
 
 public abstract class DefaultAbilities {
+    // Abstract method to retrieve the ability name.
     abstract String getAbility();
+
+    // Abstract method to retrieve the power level of the ability.
     abstract int getPower();
-    //public abstract boolean equals(Object obj);
+
+    // Override of the equals method to compare DefaultAbilities objects based on ability and power.
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;

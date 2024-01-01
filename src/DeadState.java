@@ -21,7 +21,7 @@ public class DeadState implements CharacterState {
     @Override
     public void getStronger(Character character, int strength) {
         // Display a message indicating that the character can't get stronger because it is already dead.
-        System.out.println("You can't get stronger");
+        System.out.println("You can't get stronger. The character is already dead.");
     }
     @Override
     public int health(int health) {
@@ -31,8 +31,6 @@ public class DeadState implements CharacterState {
             return 0;
         }
         return health;
-
-
     }
 
 }

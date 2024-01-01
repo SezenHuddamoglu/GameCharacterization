@@ -14,8 +14,6 @@ public class MidHealthState implements CharacterState {
     // Implementation of the takeDamage method from the CharacterState interface.
     @Override
     public void takeDamage(Character character, int damage) {
-        // Display a message indicating that the character is taking damage.
-        System.out.println("Taking damage");
         health=character.getHealth();
 
         // Update the health based on the received damage.
@@ -23,18 +21,18 @@ public class MidHealthState implements CharacterState {
         health=health(health);
 
         // Display the current damage and health.
-        System.out.println("damage: " + damage + " health: " + health);
+        System.out.print("damage: " + damage + " health: " + health+"-------");
 
         // Set the updated health to the character.
         character.setHealth(health);
 
         // Check if the character is still in mid health.
-        if (health > 40) {
+        if (health >= 40) {
             System.out.println("Still in mid health");
         }
 
         // Check if the character has entered the low health state.
-        if (health < 40 && health > 1) {
+        if (health < 40 && health >= 1) {
             character.setHealthState(character.getLowHealth());
             System.out.println("In low health");
         }
@@ -42,15 +40,13 @@ public class MidHealthState implements CharacterState {
         // Check if the character's health has reached zero, then transition to the dead state.
         if (health == 0) {
             character.setHealthState(character.getDead());
-            System.out.println("Dead state");
+            System.out.println("Your're dead");
         }
     }
 
     // Implementation of the getStronger method from the CharacterState interface.
     @Override
     public void getStronger(Character character, int strength) {
-        // Display a message indicating that the character is getting stronger.
-        System.out.println("Getting stronger");
         health=character.getHealth();
 
         // Increase the health based on the received strength.
@@ -58,19 +54,19 @@ public class MidHealthState implements CharacterState {
         health=health(health);
 
         // Display the current strength and health.
-        System.out.println("strength: " + strength + " health: " + health);
+        System.out.print("strength: " + strength + " health: " + health+"-------");
 
         // Set the updated health to the character.
         character.setHealth(health);
 
         // Check if the character has entered the well health state.
-        if (health > 70) {
+        if (health >=70) {
             character.setHealthState(character.getWellHealth());
             System.out.println("In well health");
         }
 
         // Check if the character is still in mid health.
-        if (health < 70 && health > 40) {
+        if (health < 70 && health >=40) {
             System.out.println("Still in mid health");
         }
     }
@@ -83,8 +79,6 @@ public class MidHealthState implements CharacterState {
             return 0;
         }
         return health;
-
-
     }
 
 }

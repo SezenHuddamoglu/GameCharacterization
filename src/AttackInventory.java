@@ -1,5 +1,3 @@
-import javax.swing.table.TableRowSorter;
-
 public abstract class AttackInventory {
 
     // Declare a method to get the attack power of the entity implementing this interface.

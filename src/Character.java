@@ -36,12 +36,14 @@ public abstract class Character implements Subject{
         lowHealth = new LowHealthState(this);
         dead = new DeadState(this);
 
-
-        // Set initial health and state based on health level.
-     //   health = 100;
-      //  currentState = wellHealth;
         if (health > 70) {
             currentState = wellHealth;
+        }
+        else if(health>40){
+            currentState = midHealth;
+        }
+        else{
+            currentState = lowHealth;
         }
     }
     // Method to register an observer.
@@ -141,7 +143,6 @@ public abstract class Character implements Subject{
 
     public void setDefaultAbilityPower(DefaultAbilities ability) {
         if (ability == null) {
-            // Eğer ability null ise, bir şey yapma
             return;
         }
 
@@ -158,6 +159,7 @@ public abstract class Character implements Subject{
 
     public void setDefenseInventory(DefenseInventory defenseInventory) {
         this.defenseInventory = defenseInventory;
+        this.currentDefensePower = defenseInventory.getDefensePower();
         notifyObservers();
     }
 

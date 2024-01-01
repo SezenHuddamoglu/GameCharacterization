@@ -1,5 +1,4 @@
 public class Gunshot extends AttackInventory {
-
     // Private instance variables to store the attack power and description of the gunshot.
     private int attackPower;
     private String description;
